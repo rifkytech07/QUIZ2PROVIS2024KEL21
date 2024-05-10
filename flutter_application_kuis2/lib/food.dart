@@ -9,17 +9,7 @@ class FoodListScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Food List'),
         backgroundColor: Colors.blue,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CartScreen()),
-              );
-            },
-          ),
-        ],
+        automaticallyImplyLeading: false, // Menghilangkan tombol panah kiri
       ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

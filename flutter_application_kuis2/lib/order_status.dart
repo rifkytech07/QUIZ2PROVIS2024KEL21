@@ -67,6 +67,7 @@ class _OrderStatusScreenState extends State<OrderStatusScreen> {
       appBar: AppBar(
         title: Text('Order Status'),
         backgroundColor: Colors.blue,
+        automaticallyImplyLeading: false, // Menghilangkan tombol panah kiri
       ),
       body: Center(
         child: Column(

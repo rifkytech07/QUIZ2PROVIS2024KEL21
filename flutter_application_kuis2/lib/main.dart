@@ -49,17 +49,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Local Food Delivery'),
         backgroundColor: Colors.blue,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CartScreen()),
-              );
-            },
-          ),
-        ],
+        
       ),
       body: Center(
         child: Column(
