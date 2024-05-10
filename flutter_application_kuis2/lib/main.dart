@@ -46,6 +46,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Local Food Delivery'),
+        backgroundColor: Colors.blue,
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -96,6 +97,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Padding(
@@ -139,6 +141,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign Up'),
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Padding(
@@ -183,6 +186,7 @@ class FoodListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Food List'),
+        backgroundColor: Colors.blue,
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -227,7 +231,7 @@ class FoodItem extends StatelessWidget {
         margin: EdgeInsets.all(8),
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue),
+          border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(
@@ -258,6 +262,7 @@ class FoodDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Food Details'),
+        backgroundColor: Colors.blue,
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -285,7 +290,7 @@ class FoodDetailsScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: 20),
-                Text('Food Name'),
+                Text('Food Item ${index + 1}'),
                 Text('Food Description'),
                 SizedBox(height: 20),
                 ElevatedButton(
@@ -314,6 +319,15 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.popUntil(context, ModalRoute.withName('/'));
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Padding(
@@ -333,7 +347,19 @@ class CartScreen extends StatelessWidget {
                       final quantity = cart.items.values.toList()[index];
                       return ListTile(
                         title: Text(foodName),
-                        trailing: Text('Quantity: $quantity'),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text('Quantity: $quantity'),
+                            SizedBox(width: 10),
+                            IconButton(
+                              icon: Icon(Icons.delete, color: Colors.red),
+                              onPressed: () {
+                                cart.removeItem(foodName);
+                              },
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),
@@ -357,12 +383,15 @@ class CartScreen extends StatelessWidget {
   }
 }
 
+
+
 class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Checkout'),
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Padding(
@@ -411,6 +440,7 @@ class _OrderStatusScreenState extends State<OrderStatusScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Order Status'),
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Column(

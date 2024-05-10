@@ -7,4 +7,9 @@ class Cart extends ChangeNotifier {
     items[foodName] = (items[foodName] ?? 0) + 1;
     notifyListeners();
   }
+
+  void removeItem(String foodName) {
+    items.remove(foodName);
+    notifyListeners();
+  }
 }
