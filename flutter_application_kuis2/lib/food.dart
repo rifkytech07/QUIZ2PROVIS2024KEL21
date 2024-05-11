@@ -10,6 +10,17 @@ class FoodListScreen extends StatelessWidget {
         title: Text('Food List'),
         backgroundColor: Colors.blue,
         automaticallyImplyLeading: false, // Menghilangkan tombol panah kiri
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_application_kuis2/food.dart';
 import 'package:flutter_application_kuis2/order_status.dart';
 
 class Cart with ChangeNotifier {
@@ -58,7 +59,10 @@ class CartScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.home),
             onPressed: () {
-              Navigator.popUntil(context, ModalRoute.withName('/'));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => FoodListScreen()),
+              );
             },
           ),
         ],
