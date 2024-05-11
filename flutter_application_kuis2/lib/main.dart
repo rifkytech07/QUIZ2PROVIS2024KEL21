@@ -22,7 +22,11 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false, // Menghilangkan banner debug
-        home: HomeScreen(),
+        routes: {
+          '/': (context) => HomeScreen(),
+          '/login': (context) => HomeScreen(),
+          '/foodlist': (context) => FoodListScreen(),
+        },
       ),
     );
   }
@@ -45,50 +49,11 @@ class Authentication extends ChangeNotifier {
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Local Food Delivery'),
-        backgroundColor: Colors.blue,
-        
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                );
-              },
-              child: Text('Login'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignUpScreen()),
-                );
-              },
-              child: Text('Sign Up'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class LoginScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
     final auth = Provider.of<Authentication>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('Kelompok 21: Muhammad Rifky Afandi & Indra Aldi'),
         backgroundColor: Colors.blue,
       ),
       body: Center(
@@ -111,57 +76,9 @@ class LoginScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     auth.login();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FoodListScreen()),
-                    );
+                    Navigator.pushNamed(context, '/foodlist');
                   },
                   child: Text('Login'),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SignUpScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Sign Up'),
-        backgroundColor: Colors.blue,
-      ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Container(
-            width: 300,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'Email'),
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(labelText: 'Password'),
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(labelText: 'Confirm Password'),
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Sign Up'),
                 ),
               ],
             ),
